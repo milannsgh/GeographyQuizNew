@@ -1,0 +1,73 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="320dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_centerInParent="true"
+    android:background="@color/colorPrimaryDark"
+    android:layout_gravity="center">
+
+    <com.google.android.ads.nativetemplates.TemplateView
+        android:id="@+id/usehint_template"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:gnt_template_type="@layout/gnt_small_template_view"
+        />
+
+    <TextView
+        android:id="@+id/useHintsTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        style="@android:style/TextAppearance.DeviceDefault.Large"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:text="@string/you_have_100_hints" />
+    <TextView
+        android:id="@+id/useHintsHelpRemoveExtraLetters"
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:layout_marginTop="0dp"
+        android:textStyle="bold"
+        style="@android:style/TextAppearance.DeviceDefault.Small"
+        android:background="@drawable/z_gethints"
+        android:text="@string/remove_extra_letters_10"
+        android:textColor="@color/colorNavigationBar" />
+    <TextView
+        android:id="@+id/useHintsHelpSolve"
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:layout_marginTop="0dp"
+        style="@android:style/TextAppearance.DeviceDefault.Small"
+        android:text="@string/solve_question_20"
+        android:background="@drawable/z_gethints"
+        android:textStyle="bold"
+        android:textColor="@color/colorNavigationBar" />
+    <TextView
+        android:id="@+id/useHintsWatchVideo"
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:layout_marginTop="0dp"
+        style="@android:style/TextAppearance.DeviceDefault.Small"
+        android:text="@string/reward_video_100"
+        android:background="@drawable/z_gethintsvideo"
+        android:textStyle="bold"
+        android:textColor="@color/colorNavigationBar" />
+    <TextView
+        android:id="@+id/useHintsClose"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:layout_margin="30dp"
+        style="@android:style/TextAppearance.DeviceDefault.Medium"
+        android:text="@string/close"
+        android:background="@drawable/z_strokewhite"
+        android:textColor="@color/colorPrimary" />
+</LinearLayout>

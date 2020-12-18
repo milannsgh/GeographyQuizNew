@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="letters_padding">3dp</dimen>
+    <dimen name="letters2_padding">0dp</dimen>
+    <dimen name="letters_text_size">50dp</dimen>
+    <dimen name="letters_margin">5dp</dimen>
+</resources>

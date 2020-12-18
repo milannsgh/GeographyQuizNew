@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Geography Quiz</string>
+    <string name="app_title_name">Geography Quiz</string>
+    <!-- IZMENITI ADMOB APP ID -->
+    <string name="ADMOB_APP_ID">ca-app-pub-7105741221869846~2651627344</string>
+    <!-- PublisherID za sve app isti, vezan za AdMob -->
+    <string name="ADMOB_PUBLISHER_ID">pub-7105741221869846</string>
+    <!-- AdMob TEST ADS -->
+    <string name="adMobNativeAdID">ca-app-pub-3940256099942544/2247696110</string>
+    <string name="adMobInterstitialID">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="adMobRewardVideoID">ca-app-pub-3940256099942544/5224354917</string>
+    <string name="adMobOpen">ca-app-pub-3940256099942544/3419835294</string>
+
+    <!-- AdMob ADS !!!
+    -->
+
+    <string name="correct_message">You receive +1 hint</string>
+    <string name="correct">CORRECT</string>
+    <string name="close">Close</string>
+    <string name="reward_video_100">Reward Video +100</string>
+    <string name="daily_bonus_30">Daily Bonus +30</string>
+    <string name="free_hints">free hints</string>
+    <string name="all_questions_for_this_group_are_answered_return_to_menu">All questions for this group are answered. Return to Menu.</string>
+    <string name="ok">OK</string>
+    <string name="reload">Reload</string>
+    <string name="checking_internet_connection">Checking Internet Connection</string>
+    <string name="incorrect">Incorrect</string>
+    <string name="remove_some_letters_and_try_again">Remove some letters and try again</string>
+    <string name="you_have_100_hints">You have 100 hints</string>
+    <string name="remove_extra_letters_10">Remove Extra Letters -10</string>
+    <string name="solve_question_20">Solve Question -20</string>
+    <string name="rateUs">Do you like Geography Quiz Application?\nPlease, rate us 5 stars on the store.</string>
+    <string name="noThanks">No, thanks</string>
+</resources>

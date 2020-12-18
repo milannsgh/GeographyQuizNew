@@ -1,0 +1,4 @@
+include ':nativetemplates'
+include ':googleads-mobile-android-native-templates-master'
+include ':app'
+rootProject.name = "Geography Quiz"

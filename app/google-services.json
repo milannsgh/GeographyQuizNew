@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "717367901513",
+    "firebase_url": "https://quizmini-989c3.firebaseio.com",
+    "project_id": "quizmini-989c3",
+    "storage_bucket": "quizmini-989c3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:717367901513:android:5eba387e1a8ec086",
+        "android_client_info": {
+          "package_name": "mdquizgames.geography.quiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "717367901513-bqtui4pj2dckmdj32ci9jkr9jm6sj6ni.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mdquizgames.geography.quiz",
+            "certificate_hash": "1a3ea9a8f83512c9a32e0a1fcd47f2897813f74e"
+          }
+        },
+        {
+          "client_id": "717367901513-ed42jb86018h5cbfm5qfjnvekhofjo9r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mdquizgames.geography.quiz",
+            "certificate_hash": "9935ae852668a7f838aeabcaa5e5bf5c12e4e35c"
+          }
+        },
+        {
+          "client_id": "717367901513-9pv5hgu6s6ncqh3aumgvfsmokj00thqv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6_5rUtAnX3ztZkaZW0rCg8Ih9C5clc64"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "717367901513-9pv5hgu6s6ncqh3aumgvfsmokj00thqv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
