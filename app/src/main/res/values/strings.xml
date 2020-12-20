@@ -1,19 +1,20 @@
 <resources>
     <string name="app_name">Geography Quiz</string>
-    <string name="app_title_name">Geography Quiz</string>
+    <string name="app_title_name">GEOGRAPHY QUIZ</string>
     <!-- IZMENITI ADMOB APP ID -->
     <string name="ADMOB_APP_ID">ca-app-pub-7105741221869846~2651627344</string>
     <!-- PublisherID za sve app isti, vezan za AdMob -->
     <string name="ADMOB_PUBLISHER_ID">pub-7105741221869846</string>
-    <!-- AdMob TEST ADS -->
+    <!-- AdMob TEST ADS  -->
     <string name="adMobNativeAdID">ca-app-pub-3940256099942544/2247696110</string>
     <string name="adMobInterstitialID">ca-app-pub-3940256099942544/1033173712</string>
     <string name="adMobRewardVideoID">ca-app-pub-3940256099942544/5224354917</string>
-    <string name="adMobOpen">ca-app-pub-3940256099942544/3419835294</string>
 
     <!-- AdMob ADS !!!
-    -->
-
+    <string name="adMobNativeAdID">ca-app-pub-7105741221869846/4118901388</string>
+    <string name="adMobInterstitialID">ca-app-pub-7105741221869846/3943408156</string>
+    <string name="adMobRewardVideoID">ca-app-pub-7105741221869846/5611713049</string>
+ -->
     <string name="correct_message">You receive +1 hint</string>
     <string name="correct">CORRECT</string>
     <string name="close">Close</string>
