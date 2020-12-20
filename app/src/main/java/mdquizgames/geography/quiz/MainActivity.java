@@ -61,6 +61,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import jxl.Cell;
 import jxl.Sheet;
@@ -220,6 +221,8 @@ public class MainActivity extends AppCompatActivity implements RewardedVideoAdLi
             TextView textViewPoints = findViewById(R.id.textViewPoints);
             TextView textViewQuestions = findViewById(R.id.textViewQuestions);
             TextView textViewOtherApps = findViewById(R.id.textViewOtherApps);
+            ImageView imageViewTop = findViewById(R.id.imageTop);
+            ImageView imageViewBottom = findViewById(R.id.imageBottom);
 
             textViewPlay.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
@@ -239,13 +242,17 @@ public class MainActivity extends AppCompatActivity implements RewardedVideoAdLi
             tmp = "Points: " + playerPoints;
             textViewPoints.setText(tmp);
 
-            Animation anim = new AlphaAnimation(0.5f, 1.0f);
+            Animation anim = new AlphaAnimation(0.1f, 1.0f);
             anim.setDuration(1000); //You can manage the time of the blink with this parameter
             anim.setStartOffset(0);
             anim.setRepeatMode(Animation.RESTART);
             anim.setRepeatCount(Animation.INFINITE);
             textViewOtherApps.startAnimation(anim);
 
+            imageViewTop.getLayoutParams().height = screenWidth/3;
+            imageViewTop.getLayoutParams().width = screenWidth;
+            imageViewBottom.getLayoutParams().height = screenWidth/3;
+            imageViewBottom.getLayoutParams().width = screenWidth;
 
         }catch (Exception e){
             printErrorMessage(e.getMessage());
@@ -273,8 +280,8 @@ public class MainActivity extends AppCompatActivity implements RewardedVideoAdLi
             tvQuestion = findViewById(R.id.textViewPlayQuestion);
             textViewPlayPrevious = findViewById(R.id.textViewPlayPrevious);
             textViewPlayNext = findViewById(R.id.textViewPlayNext);
-            textViewPlayTemp1 = findViewById(R.id.textViewPlayTemp1);
-            textViewPlayTemp2 = findViewById(R.id.textViewPlayTemp2);
+    //        textViewPlayTemp1 = findViewById(R.id.textViewPlayTemp1);
+    //        textViewPlayTemp2 = findViewById(R.id.textViewPlayTemp2);
 
             TextView textViewPlayNavigationBack = findViewById(R.id.textViewPlayNavigationBack);
             textViewPlayNavigationTitle = findViewById(R.id.textViewPlayNavigationTitle);
@@ -457,10 +464,10 @@ public class MainActivity extends AppCompatActivity implements RewardedVideoAdLi
             textViewY.getLayoutParams().width = (screenHeight * 8) / 100;
 
             imageViewQuestion.getLayoutParams().height = (screenHeight * 30) / 100;
-            imageViewQuestion.getLayoutParams().width = screenWidth/2;
+            imageViewQuestion.getLayoutParams().width = screenWidth - screenWidth/4;
 
             tvQuestion.getLayoutParams().height = (screenHeight * 30) / 100;
-            tvQuestion.getLayoutParams().width = screenWidth/2;
+            tvQuestion.getLayoutParams().width = screenWidth - screenWidth/4;
             int tempDimension = screenWidth/8;
 
          /*   if(imageViewQuestion.getLayoutParams().width>tvQuestion.getLayoutParams().width) {
@@ -701,7 +708,7 @@ public class MainActivity extends AppCompatActivity implements RewardedVideoAdLi
         }
     }
 
-    private void fillQuestionTextViews(String string){
+  /*  private void fillQuestionTextViews(String string){
         try {
             if (!string.contains("_")) {
                 TextView tv;
@@ -774,6 +781,231 @@ public class MainActivity extends AppCompatActivity implements RewardedVideoAdLi
             printErrorMessage(e.getMessage());
         }
     }
+*/
+
+    private void fillQuestionTextViews(String string){
+        try {
+            if (!string.contains("_")) {
+                TextView tv;
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                params.setMargins(5, 5, 5, 5);
+                params.gravity = Gravity.CENTER;
+
+                int txtViewW = ((screenWidth - string.length() * 6) - 70) / string.length();
+                int txtViewH = (screenHeight * 7) / 100;
+
+                for (int i = 0; i < string.length(); i++) {
+                    tv = new TextView(MainActivity.this);
+                    tv.setTextColor(Color.WHITE);
+                    tv.setText("?");
+                    tv.setBackgroundResource(R.drawable.z_letterbackground);
+                    tv.setGravity(Gravity.CENTER);
+
+                    TextViewCompat.setAutoSizeTextTypeWithDefaults(tv, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
+                    tv.setLayoutParams(params);
+                    fitTextViewDimensiond(tv, txtViewW, txtViewH);
+                    layoutLetters1.addView(tv);
+
+                    questionTextViewList.add(tv);
+                }
+                layoutLetters2.getLayoutParams().height = 0;
+                layoutLetters2.getLayoutParams().width = 0;
+            } else {
+                String[] separated = string.split("_");
+
+                TextView tv;
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                params.setMargins(2, 2, 2, 2);
+                params.gravity = Gravity.CENTER;
+
+                if(separated.length==3){
+                    int length = Math.max((separated[0].length()+separated[1].length()+1), separated[2].length());
+                    int txtViewW = (screenWidth - length * 6) / length;
+                    int txtViewH = (screenHeight * 6) / 100;
+
+                    for (int i = 0; i < separated[0].length(); i++) {
+                        tv = new TextView(MainActivity.this);
+                        tv.setTextColor(Color.WHITE);
+                        tv.setText("?");
+                        tv.setBackgroundResource(R.drawable.z_letterbackground);
+                        tv.setGravity(Gravity.CENTER);
+
+                        TextViewCompat.setAutoSizeTextTypeWithDefaults(tv, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
+                        tv.setLayoutParams(params);
+                        fitTextViewDimensiond(tv, txtViewW, txtViewH);
+                        layoutLetters1.addView(tv);
+
+                        questionTextViewList.add(tv);
+                    }
+
+                    tv = new TextView(MainActivity.this);
+                    tv.setTextColor(Color.WHITE);
+                    tv.setText("");
+                    tv.setGravity(Gravity.CENTER);
+                    TextViewCompat.setAutoSizeTextTypeWithDefaults(tv, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
+                    tv.setLayoutParams(params);
+                    fitTextViewDimensiond(tv, txtViewW, txtViewH);
+                    layoutLetters1.addView(tv);
+
+                    for (int j = 0; j < separated[1].length(); j++) {
+                        tv = new TextView(MainActivity.this);
+                        tv.setTextColor(Color.WHITE);
+                        tv.setText("?");
+                        tv.setBackgroundResource(R.drawable.z_letterbackground);
+                        tv.setGravity(Gravity.CENTER);
+
+                        TextViewCompat.setAutoSizeTextTypeWithDefaults(tv, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
+                        tv.setLayoutParams(params);
+                        fitTextViewDimensiond(tv, txtViewW, txtViewH);
+                        layoutLetters1.addView(tv);
+
+                        questionTextViewList.add(tv);
+                    }
+
+                    for (int k = 0; k < separated[2].length(); k++) {
+                        tv = new TextView(MainActivity.this);
+                        tv.setTextColor(Color.WHITE);
+                        tv.setText("?");
+                        tv.setBackgroundResource(R.drawable.z_letterbackground);
+                        tv.setGravity(Gravity.CENTER);
+
+                        TextViewCompat.setAutoSizeTextTypeWithDefaults(tv, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
+                        tv.setLayoutParams(params);
+                        fitTextViewDimensiond(tv, txtViewW, txtViewH);
+                        layoutLetters2.addView(tv);
+
+                        questionTextViewList.add(tv);
+                    }
+
+                }else if(separated.length==4) {
+                    printMessage("Pitanje ima 4 reci");
+
+                    int length = Math.max((separated[0].length()+separated[1].length()+1), separated[2].length()+separated[3].length()+1);
+                    int txtViewW = (screenWidth - length * 6) / length;
+                    int txtViewH = (screenHeight * 6) / 100;
+
+                    for (int i = 0; i < separated[0].length(); i++) {
+                        tv = new TextView(MainActivity.this);
+                        tv.setTextColor(Color.WHITE);
+                        tv.setText("?");
+                        tv.setBackgroundResource(R.drawable.z_letterbackground);
+                        tv.setGravity(Gravity.CENTER);
+
+                        TextViewCompat.setAutoSizeTextTypeWithDefaults(tv, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
+                        tv.setLayoutParams(params);
+                        fitTextViewDimensiond(tv, txtViewW, txtViewH);
+                        layoutLetters1.addView(tv);
+
+                        questionTextViewList.add(tv);
+                    }
+
+                    tv = new TextView(MainActivity.this);
+                    tv.setTextColor(Color.WHITE);
+                    tv.setText("");
+                    tv.setGravity(Gravity.CENTER);
+                    TextViewCompat.setAutoSizeTextTypeWithDefaults(tv, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
+                    tv.setLayoutParams(params);
+                    fitTextViewDimensiond(tv, txtViewW, txtViewH);
+                    layoutLetters1.addView(tv);
+
+                    for (int j = 0; j < separated[1].length(); j++) {
+                        tv = new TextView(MainActivity.this);
+                        tv.setTextColor(Color.WHITE);
+                        tv.setText("?");
+                        tv.setBackgroundResource(R.drawable.z_letterbackground);
+                        tv.setGravity(Gravity.CENTER);
+
+                        TextViewCompat.setAutoSizeTextTypeWithDefaults(tv, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
+                        tv.setLayoutParams(params);
+                        fitTextViewDimensiond(tv, txtViewW, txtViewH);
+                        layoutLetters1.addView(tv);
+
+                        questionTextViewList.add(tv);
+                    }
+
+                    for (int k = 0; k < separated[2].length(); k++) {
+                        tv = new TextView(MainActivity.this);
+                        tv.setTextColor(Color.WHITE);
+                        tv.setText("?");
+                        tv.setBackgroundResource(R.drawable.z_letterbackground);
+                        tv.setGravity(Gravity.CENTER);
+
+                        TextViewCompat.setAutoSizeTextTypeWithDefaults(tv, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
+                        tv.setLayoutParams(params);
+                        fitTextViewDimensiond(tv, txtViewW, txtViewH);
+                        layoutLetters2.addView(tv);
+
+                        questionTextViewList.add(tv);
+                    }
+
+                    tv = new TextView(MainActivity.this);
+                    tv.setTextColor(Color.WHITE);
+                    tv.setText("");
+                    tv.setGravity(Gravity.CENTER);
+                    TextViewCompat.setAutoSizeTextTypeWithDefaults(tv, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
+                    tv.setLayoutParams(params);
+                    fitTextViewDimensiond(tv, txtViewW, txtViewH);
+                    layoutLetters2.addView(tv);
+
+                    for (int l = 0; l < separated[3].length(); l++) {
+                        tv = new TextView(MainActivity.this);
+                        tv.setTextColor(Color.WHITE);
+                        tv.setText("?");
+                        tv.setBackgroundResource(R.drawable.z_letterbackground);
+                        tv.setGravity(Gravity.CENTER);
+
+                        TextViewCompat.setAutoSizeTextTypeWithDefaults(tv, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
+                        tv.setLayoutParams(params);
+                        fitTextViewDimensiond(tv, txtViewW, txtViewH);
+                        layoutLetters2.addView(tv);
+
+                        questionTextViewList.add(tv);
+                    }
+
+                } else {
+
+                    int length = Math.max(separated[0].length(), separated[1].length());
+
+                    int txtViewW = (screenWidth - length * 6) / length;
+                    int txtViewH = (screenHeight * 6) / 100;
+
+                    for (int i = 0; i < separated[0].length(); i++) {
+                        tv = new TextView(MainActivity.this);
+                        tv.setTextColor(Color.WHITE);
+                        tv.setText("?");
+                        tv.setBackgroundResource(R.drawable.z_letterbackground);
+                        tv.setGravity(Gravity.CENTER);
+
+                        TextViewCompat.setAutoSizeTextTypeWithDefaults(tv, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
+                        tv.setLayoutParams(params);
+                        fitTextViewDimensiond(tv, txtViewW, txtViewH);
+                        layoutLetters1.addView(tv);
+
+                        questionTextViewList.add(tv);
+                    }
+
+                    for (int j = 0; j < separated[1].length(); j++) {
+                        tv = new TextView(MainActivity.this);
+                        tv.setTextColor(Color.WHITE);
+                        tv.setText("?");
+                        tv.setBackgroundResource(R.drawable.z_letterbackground);
+                        tv.setGravity(Gravity.CENTER);
+
+                        TextViewCompat.setAutoSizeTextTypeWithDefaults(tv, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
+                        tv.setLayoutParams(params);
+                        fitTextViewDimensiond(tv, txtViewW, txtViewH);
+                        layoutLetters2.addView(tv);
+
+                        questionTextViewList.add(tv);
+                    }
+                }
+            }
+        }catch (Exception e){
+            printErrorMessage("fillQuestionTextViews " + e.getMessage());
+        }
+    }
+
+
 
     private void fitLettersSizes(String str){
         try {
@@ -1032,7 +1264,11 @@ public class MainActivity extends AppCompatActivity implements RewardedVideoAdLi
 
     private boolean odgovorenaSvaPitanjaIzGrupe(){
         try {
-            return listaPitanja.size() == brojOdgovorenihPitanjaPoGrupi.get(listaPitanja.get(0).getNazivGrupe());
+            if(brojOdgovorenihPitanjaPoGrupi.get(listaPitanja.get(0).getNazivGrupe())!=null) {
+                return listaPitanja.size() == brojOdgovorenihPitanjaPoGrupi.get(listaPitanja.get(0).getNazivGrupe());
+            }else{
+                return false;
+            }
         }catch (Exception e){
             printErrorMessage(e.getMessage());
             return false;
@@ -1078,7 +1314,7 @@ public class MainActivity extends AppCompatActivity implements RewardedVideoAdLi
                 fitLettersSizes(question);
                 fillQuestionTextViews(question);
 
-                if(tekstPitanja.length()>0){
+                if(tekstPitanja.length()>0 && !tekstPitanja.equalsIgnoreCase("none")){
                     tvQuestion.setText(tekstPitanja);
                     tvQuestion.setEnabled(true);
                     tvQuestion.setVisibility(View.VISIBLE);
@@ -1348,7 +1584,7 @@ public class MainActivity extends AppCompatActivity implements RewardedVideoAdLi
             for(int j=0; j<listaPitanja.size(); j++){
                 iterator = listaPitanja.get(j);
                 if(daLiPostojiGrupa(iterator.getNazivGrupe())){
-                    mapaGrupa.get(iterator.getNazivGrupe()).pitanjaGrupe.add(iterator);
+                    Objects.requireNonNull(mapaGrupa.get(iterator.getNazivGrupe())).pitanjaGrupe.add(iterator);
                 }else{
                     GrupaPitanja novaGrupa = new GrupaPitanja();
                     novaGrupa.setNazivGrupe(iterator.getNazivGrupe());
@@ -1518,7 +1754,8 @@ public class MainActivity extends AppCompatActivity implements RewardedVideoAdLi
 
     private void showRateDialog(){
         try{
-            if(odgovorenaPitanja.size()==42 && !rateDialogShowed) {
+            params.putString("Odgovorenih", ""+odgovorenaPitanja.size());
+            if(odgovorenaPitanja.size()==52 && !rateDialogShowed) {
                 rateDialogShowed = true;
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
                 View mView = getLayoutInflater().inflate(R.layout.rate_dialog, null);
@@ -1532,7 +1769,7 @@ public class MainActivity extends AppCompatActivity implements RewardedVideoAdLi
                 textViewRateOkButton.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         try {
-                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.mdquizgames.logoquiz.car.brands")));
+                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=mdquizgames.geography.quiz")));
                             dialog.dismiss();
                         } catch (Exception e) {
                             dialog.dismiss();
@@ -1548,6 +1785,10 @@ public class MainActivity extends AppCompatActivity implements RewardedVideoAdLi
                 writeSharedPref();
                 dialog.show();
                 mFBAnalytics.logEvent("RateDialog_SHOW", params);
+            }else if(odgovorenaPitanja.size()==200){
+                mFBAnalytics.logEvent("Q_200", params);
+            }else if(odgovorenaPitanja.size()==400){
+                mFBAnalytics.logEvent("Q_400", params);
             }
         }catch (Exception e){
             printErrorMessage(e.getMessage());
@@ -1612,8 +1853,8 @@ public class MainActivity extends AppCompatActivity implements RewardedVideoAdLi
             if (taskCorrect) {
                 titleTextView.setText(R.string.correct);
                 messageTextView.setText(R.string.correct_message);
-                pictureImageView.setBackgroundResource(getImageIDFromName(listaPitanja.get(currentQuestionIndex).getOriginalnaSlika()));
-                fitImageViewDimensions(pictureImageView, getImageIDFromName(listaPitanja.get(currentQuestionIndex).getOriginalnaSlika()));
+                pictureImageView.setBackgroundResource(getImageIDFromName("z_correct"));
+                fitImageViewDimensions(pictureImageView, getImageIDFromName("z_correct"));
             }
             dialog.show();
         }catch (Exception e){
@@ -1906,9 +2147,9 @@ public class MainActivity extends AppCompatActivity implements RewardedVideoAdLi
     private void showInterstitialAd() {
         try {
             if (mInterstitialAd != null && mInterstitialAd.isLoaded()) {
-                if((odgovorenaPitanja.size()%5)==0) {
-                    mInterstitialAd.show();
+                if((odgovorenaPitanja.size()%4)==0) {
                     mFBAnalytics.logEvent("Interstitial_SHOW", params);
+                    mInterstitialAd.show();
                 }
             }
         } catch (Exception e) {
